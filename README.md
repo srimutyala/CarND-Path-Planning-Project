@@ -1,5 +1,21 @@
 # CarND-Path-Planning-Project
 Self-Driving Car Engineer Nanodegree Program
+
+Path Planning in a self-driving vehicle is a complex routing problem with varying environment behavior  that needs to be modelled or sensed constantly. It cna be broken up into a few distinct modules:
+
+1. Scene Recognition
+2. Obstacle Avoidance
+3. Trajectory Planning
+
+Scene Recognition
+
+Scene recognition can be achievied using a variety of sensors(RADAR, LIDAR, Imaging). In this project, the scene/environment information is provided as sensor inputs by the simulator. This comes in the form of other vehicles of the road and their positions, speeds & other information.
+
+Obstacle Avoidance
+Once we have the positional information of all the objects, the first task is to avoid hitting any of them. We achieve this calculating the speed of the objects in the vehicle's lane and slowing down. 
+
+Trajectory Planning
+This is where a lot of the work is done. 
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases).
