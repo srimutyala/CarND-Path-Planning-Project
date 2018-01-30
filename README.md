@@ -1,49 +1,5 @@
 # CarND-Path-Planning-Project
 Self-Driving Car Engineer Nanodegree Program
-
-Path Planning in a self-driving vehicle is a complex routing problem with varying environment behavior  that needs to be modelled or sensed constantly. It cna be broken up into a few distinct modules:
-
-1. Scene Recognition
-2. Obstacle Avoidance
-3. Trajectory Planning
-
-Scene Recognition
-
-Scene recognition can be achievied using a variety of sensors(RADAR, LIDAR, Imaging). In this project, the scene/environment information is provided as sensor inputs by the simulator. This comes in the form of other vehicles of the road and their positions, speeds & other information.
-
-Obstacle Avoidance
-Once we have the positional information of all the objects, the first task is to avoid hitting any of them. We achieve this calculating the speed of the objects in the vehicle's lane and slowing down. 
-
-Trajectory Planning
-This is where a lot of the work is done. 
-
-Rubric Criteria:
-1. The car is able to drive at least 4.32 miles without incident
-The code/car was run multiple times on the simulator and each time I ran over 4.32 miles without any incident. The car was also ran for longer periods of time (over 10 miles) multiple times without any incident.
-
-2. The car drives according to the speed limit.
-The car's maximum velocity is set to 49.5 mph (50 is the speed limit). I also made sure that the car does not travel slowly for long periods of time by increasing its speend whenever it can (if not stuck in traffic)
-
-3. Max Acceleration and Jerk are not Exceeded.
-The deceleration and accelerations at each update are set so as to not exceed 10 m/s^2  while also making sure the jerk does not go over 10 m/s^3.
-
-4. Car does not have collisions.
-The first check at every update is whether there is a car infront that's closer than 30m. If so, we slow down. Then, we evaluate options to change lanes which also takes vehicles thata re closer to ours before deciding whether shift lanes or stay in the slower lane.
-
-5. The car stays in its lane, except for the time between changing lanes.
-The car does stay in its lane all the time except for when it needs to change lanes.
-
-6. The car is able to change lanes
-We trigger a lane change feasibility check whenever there is a slower moving car in front of the vehicle that's at less 30m away. If we can safely exceute a lane change, we do so. Else, we reduce the vehicle's speed and stay in the same lane. We keep checking this lane change possibility as long as the car is behind a slow-moving vehicle.
-
-7. Path Generation
-We used a spline to map points for the vehicle's trajectory. A set of points are anchored at equal distances (at 30m, 45m, 60m) and new points are generated along these anchors to generate a smooth trajectory. This trajectory is constantly updated taking any lane chnages and slow traffic into consideration.
-
-Improvements
-There are many aspects of this model that can be enhanced. A few that are on my mind and will possibily implement soon (for the final project) are:
-
-1. Designing a cost function (using criteria like lane changes, desired speed, collisions, etc)
-2. Improvement in path planning where the car doesn't get boxed in slower moving traffic by using current speed, acceleration of the vehicles in the vicinity and picking a seemingly sub-optimal path in the short run but overall the best.
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases).
@@ -131,54 +87,50 @@ A really helpful resource for doing this project and creating smooth trajectorie
     git checkout e94b6e1
     ```
 
-## Editor Settings
-
-We've purposefully kept editor configuration files out of this repo in order to
-keep it as simple and environment agnostic as possible. However, we recommend
-using the following settings:
-
-* indent using spaces
-* set tab width to 2 spaces (keeps the matrices in source code aligned)
-
-## Code Style
-
-Please (do your best to) stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
-
 ## Project Instructions and Rubric
 
-Note: regardless of the changes you make, your project must be buildable using
-cmake and make!
+Path Planning in a self-driving vehicle is a complex routing problem with varying environment behavior  that needs to be modelled or sensed constantly. It cna be broken up into a few distinct modules:
 
+1. Scene Recognition
+2. Obstacle Avoidance
+3. Trajectory Planning
 
-## Call for IDE Profiles Pull Requests
+Scene Recognition
 
-Help your fellow students!
+Scene recognition can be achievied using a variety of sensors(RADAR, LIDAR, Imaging). In this project, the scene/environment information is provided as sensor inputs by the simulator. This comes in the form of other vehicles of the road and their positions, speeds & other information.
 
-We decided to create Makefiles with cmake to keep this project as platform
-agnostic as possible. Similarly, we omitted IDE profiles in order to ensure
-that students don't feel pressured to use one IDE or another.
+Obstacle Avoidance
+Once we have the positional information of all the objects, the first task is to avoid hitting any of them. We achieve this calculating the speed of the objects in the vehicle's lane and slowing down. 
 
-However! I'd love to help people get up and running with their IDEs of choice.
-If you've created a profile for an IDE that you think other students would
-appreciate, we'd love to have you add the requisite profile files and
-instructions to ide_profiles/. For example if you wanted to add a VS Code
-profile, you'd add:
+Trajectory Planning
+This is where most of the work for the project is done. 
 
-* /ide_profiles/vscode/.vscode
-* /ide_profiles/vscode/README.md
+Rubric Criteria:
+1. The car is able to drive at least 4.32 miles without incident
+The code/car was run multiple times on the simulator and each time I ran over 4.32 miles without any incident. The car was also ran for longer periods of time (over 10 miles) multiple times without any incident.
 
-The README should explain what the profile does, how to take advantage of it,
-and how to install it.
+2. The car drives according to the speed limit.
+The car's maximum velocity is set to 49.5 mph (50 is the speed limit). I also made sure that the car does not travel slowly for long periods of time by increasing its speend whenever it can (if not stuck in traffic)
 
-Frankly, I've never been involved in a project with multiple IDE profiles
-before. I believe the best way to handle this would be to keep them out of the
-repo root to avoid clutter. My expectation is that most profiles will include
-instructions to copy files to a new location to get picked up by the IDE, but
-that's just a guess.
+3. Max Acceleration and Jerk are not Exceeded.
+The deceleration and accelerations at each update are set so as to not exceed 10 m/s^2  while also making sure the jerk does not go over 10 m/s^3.
 
-One last note here: regardless of the IDE used, every submitted project must
-still be compilable with cmake and make./
+4. Car does not have collisions.
+The first check at every update is whether there is a car infront that's closer than 30m. If so, we slow down. Then, we evaluate options to change lanes which also takes vehicles thata re closer to ours before deciding whether shift lanes or stay in the slower lane.
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+5. The car stays in its lane, except for the time between changing lanes.
+The car does stay in its lane all the time except for when it needs to change lanes.
+
+6. The car is able to change lanes
+We trigger a lane change feasibility check whenever there is a slower moving car in front of the vehicle that's at less 30m away. If we can safely exceute a lane change, we do so. Else, we reduce the vehicle's speed and stay in the same lane. We keep checking this lane change possibility as long as the car is behind a slow-moving vehicle.
+
+7. Path Generation
+We used a spline to map points for the vehicle's trajectory. A set of points are anchored at equal distances (at 30m, 45m, 60m) and new points are generated along these anchors to generate a smooth trajectory. This trajectory is constantly updated taking any lane chnages and slow traffic into consideration.
+
+Improvements
+There are many aspects of this model that can be enhanced. A few that are on my mind and will possibily implement soon (for the final project) are:
+
+1. Designing a cost function (using criteria like lane changes, desired speed, collisions, etc)
+2. Improvement in path planning where the car doesn't get boxed in slower moving traffic by using current speed, acceleration of the vehicles in the vicinity and picking a seemingly sub-optimal path in the short run but overall the best.
+
 
