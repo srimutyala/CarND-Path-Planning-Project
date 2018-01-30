@@ -27,6 +27,23 @@ The car's maximum velocity is set to 49.5 mph (50 is the speed limit). I also ma
 3. Max Acceleration and Jerk are not Exceeded.
 The deceleration and accelerations at each update are set so as to not exceed 10 m/s^2  while also making sure the jerk does not go over 10 m/s^3.
 
+4. Car does not have collisions.
+The first check at every update is whether there is a car infront that's closer than 30m. If so, we slow down. Then, we evaluate options to change lanes which also takes vehicles thata re closer to ours before deciding whether shift lanes or stay in the slower lane.
+
+5. The car stays in its lane, except for the time between changing lanes.
+The car does stay in its lane all the time except for when it needs to change lanes.
+
+6. The car is able to change lanes
+We trigger a lane change feasibility check whenever there is a slower moving car in front of the vehicle that's at less 30m away. If we can safely exceute a lane change, we do so. Else, we reduce the vehicle's speed and stay in the same lane. We keep checking this lane change possibility as long as the car is behind a slow-moving vehicle.
+
+7. Path Generation
+We used a spline to map points for the vehicle's trajectory. A set of points are anchored at equal distances (at 30m, 45m, 60m) and new points are generated along these anchors to generate a smooth trajectory. This trajectory is constantly updated taking any lane chnages and slow traffic into consideration.
+
+Improvements
+There are many aspects of this model that can be enhanced. A few that are on my mind and will possibily implement soon (for the final project) are:
+
+1. Designing a cost function (using criteria like lane changes, desired speed, collisions, etc)
+2. Improvement in path planning where the car doesn't get boxed in slower moving traffic by using current speed, acceleration of the vehicles in the vicinity and picking a seemingly sub-optimal path in the short run but overall the best.
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases).
