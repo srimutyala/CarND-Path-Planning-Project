@@ -16,6 +16,17 @@ Once we have the positional information of all the objects, the first task is to
 
 Trajectory Planning
 This is where a lot of the work is done. 
+
+Rubric Criteria:
+1. The car is able to drive at least 4.32 miles without incident
+The code/car was run multiple times on the simulator and each time I ran over 4.32 miles without any incident. The car was also ran for longer periods of time (over 10 miles) multiple times without any incident.
+
+2. The car drives according to the speed limit.
+The car's maximum velocity is set to 49.5 mph (50 is the speed limit). I also made sure that the car does not travel slowly for long periods of time by increasing its speend whenever it can (if not stuck in traffic)
+
+3. Max Acceleration and Jerk are not Exceeded.
+The deceleration and accelerations at each update are set so as to not exceed 10 m/s^2  while also making sure the jerk does not go over 10 m/s^3.
+
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases).
