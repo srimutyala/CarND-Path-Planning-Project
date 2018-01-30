@@ -95,17 +95,19 @@ Path Planning in a self-driving vehicle is a complex routing problem with varyin
 2. Obstacle Avoidance
 3. Trajectory Planning
 
-Scene Recognition
+###Scene Recognition
 
 Scene recognition can be achievied using a variety of sensors(RADAR, LIDAR, Imaging). In this project, the scene/environment information is provided as sensor inputs by the simulator. This comes in the form of other vehicles of the road and their positions, speeds & other information.
 
-Obstacle Avoidance
+###Obstacle Avoidance
+
 Once we have the positional information of all the objects, the first task is to avoid hitting any of them. We achieve this calculating the speed of the objects in the vehicle's lane and slowing down. 
 
-Trajectory Planning
+###Trajectory Planning
+
 This is where most of the work for the project is done. 
 
-Rubric Criteria:
+####Rubric Criteria:
 1. The car is able to drive at least 4.32 miles without incident
 The code/car was run multiple times on the simulator and each time I ran over 4.32 miles without any incident. The car was also ran for longer periods of time (over 10 miles) multiple times without any incident.
 
@@ -127,7 +129,7 @@ We trigger a lane change feasibility check whenever there is a slower moving car
 7. Path Generation
 We used a spline to map points for the vehicle's trajectory. A set of points are anchored at equal distances (at 30m, 45m, 60m) and new points are generated along these anchors to generate a smooth trajectory. This trajectory is constantly updated taking any lane chnages and slow traffic into consideration.
 
-Improvements
+####Improvements
 There are many aspects of this model that can be enhanced. A few that are on my mind and will possibily implement soon (for the final project) are:
 
 1. Designing a cost function (using criteria like lane changes, desired speed, collisions, etc)
