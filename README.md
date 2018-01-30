@@ -108,25 +108,32 @@ Once we have the positional information of all the objects, the first task is to
 This is where most of the work for the project is done. 
 
 #### Rubric Criteria:
-1. The car is able to drive at least 4.32 miles without incident
+1. The car is able to drive at least 4.32 miles without incident.
+
 The code/car was run multiple times on the simulator and each time I ran over 4.32 miles without any incident. The car was also ran for longer periods of time (over 10 miles) multiple times without any incident.
 
 2. The car drives according to the speed limit.
+
 The car's maximum velocity is set to 49.5 mph (50 is the speed limit). I also made sure that the car does not travel slowly for long periods of time by increasing its speend whenever it can (if not stuck in traffic)
 
 3. Max Acceleration and Jerk are not Exceeded.
+
 The deceleration and accelerations at each update are set so as to not exceed 10 m/s^2  while also making sure the jerk does not go over 10 m/s^3.
 
 4. Car does not have collisions.
+
 The first check at every update is whether there is a car infront that's closer than 30m. If so, we slow down. Then, we evaluate options to change lanes which also takes vehicles thata re closer to ours before deciding whether shift lanes or stay in the slower lane.
 
 5. The car stays in its lane, except for the time between changing lanes.
+
 The car does stay in its lane all the time except for when it needs to change lanes.
 
-6. The car is able to change lanes
+6. The car is able to change lanes.
+
 We trigger a lane change feasibility check whenever there is a slower moving car in front of the vehicle that's at less 30m away. If we can safely exceute a lane change, we do so. Else, we reduce the vehicle's speed and stay in the same lane. We keep checking this lane change possibility as long as the car is behind a slow-moving vehicle.
 
-7. Path Generation
+7. Path Generation.
+
 We used a spline to map points for the vehicle's trajectory. A set of points are anchored at equal distances (at 30m, 45m, 60m) and new points are generated along these anchors to generate a smooth trajectory. This trajectory is constantly updated taking any lane chnages and slow traffic into consideration.
 
 #### Improvements
